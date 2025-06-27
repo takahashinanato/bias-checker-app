@@ -5,8 +5,6 @@ from openai import OpenAI
 import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
-fm._rebuild()
-
 
 # ✅ 日本語フォントを設定（Windowsなら「メイリオ」）
 matplotlib.rcParams['font.family'] = 'sans-serif'
@@ -74,7 +72,7 @@ if st.button("診断する") and user_input:
             # 日本語フォントを明示的に読み込む（Streamlit Cloud用）
             font_path = "./fonts/NotoSansCJKjp-Regular.otf"
             font_prop = fm.FontProperties(fname=font_path)
-            plt.rcParams['font.family'] = 'Noto Sans CJK JP'
+            plt.rcParams['font.family'] = 'Noto Sans CJK JP', 'IPAexGothic', 'sans-serif'
 
             fig, ax = plt.subplots()
             ax.scatter(bias_score, strength_score, color="blue")
