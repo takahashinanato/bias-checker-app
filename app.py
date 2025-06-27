@@ -4,9 +4,11 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import matplotlib
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+
 
 # ✅ 日本語フォントを設定（Windowsなら「メイリオ」）
-matplotlib.rcParams['font.family'] = 'Meiryo'
+matplotlib.rcParams['font.family'] = 'sans-serif'
 
 # ✅ APIキーを読み込む（.envファイルを使う）
 load_dotenv()
@@ -68,6 +70,10 @@ if st.button("診断する") and user_input:
 
             st.markdown(f"**傾向スコア:** {bias_score}　　**強さスコア:** {strength_score}")
             st.markdown(f"**コメント:** {comment}")
+            # 日本語フォントを明示的に読み込む（Streamlit Cloud用）
+            font_path = "./fonts/NotoSansCJKjp-Regular.otf"
+            font_prop = fm.FontProperties(fname=font_path)
+            plt.rcParams['font.family'] = font_prop.get_name()
 
             fig, ax = plt.subplots()
             ax.scatter(bias_score, strength_score, color="blue")
