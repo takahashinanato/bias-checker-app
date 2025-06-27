@@ -72,7 +72,8 @@ if st.button("診断する") and user_input:
             # 日本語フォントを明示的に読み込む（Streamlit Cloud用）
             font_path = "./fonts/NotoSansCJKjp-Regular.otf"
             font_prop = fm.FontProperties(fname=font_path)
-            plt.rcParams['font.family'] = 'Noto Sans CJK JP', 'IPAexGothic', 'sans-serif'
+            plt.rcParams['font.family'] = 'plt.rcParams['font.family'] = DejaVu Sans'
+
 
             fig, ax = plt.subplots()
             ax.scatter(bias_score, strength_score, color="blue")
